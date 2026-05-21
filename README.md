@@ -4,10 +4,10 @@
 ---
 
 ## Live Demo
-> Add your Vercel URL here after deployment
+ https://prodesk-sprint01.vercel.app/
 
 ## Screenshot
-> Add a screenshot of your deployed site here
+ 1[Site Preview](./screenshot.png)
 
 ---
 
