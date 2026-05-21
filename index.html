@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prodesk IT — We Build Digital Experiences</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              display: ['Syne', 'sans-serif'],
+              body: ['DM Sans', 'sans-serif'],
+            },
+          },
+        },
+      }
+    </script>
+
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body { font-family: 'DM Sans', sans-serif; }
+      h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
+
+      .glass-nav {
+        background: rgba(255, 255, 255, 0.55);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        transition: background 0.3s ease;
+      }
+      .dark .glass-nav {
+        background: rgba(10, 18, 40, 0.65);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      }
+
+      .nav-link { position: relative; transition: color 0.2s ease; }
+      .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: -3px; left: 0;
+        width: 0; height: 2px;
+        background: #38bdf8;
+        border-radius: 99px;
+        transition: width 0.3s ease;
+      }
+      .nav-link:hover::after { width: 100%; }
+
+      .hero-bg {
+        background: radial-gradient(ellipse at 60% 40%, #0c2a4a 0%, #0f172a 55%, #020b18 100%);
+      }
+
+      .gradient-text {
+        background: linear-gradient(90deg, #38bdf8, #818cf8, #38bdf8);
+        background-size: 200%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: shimmer 4s linear infinite;
+      }
+      @keyframes shimmer {
+        0%   { background-position: 0% 50%; }
+        100% { background-position: 200% 50%; }
+      }
+
+      .service-card {
+        transition: transform 0.35s cubic-bezier(.22,.68,0,1.2), box-shadow 0.35s ease;
+      }
+      .service-card:hover {
+        transform: translateY(-10px) scale(1.025);
+        box-shadow: 0 24px 48px rgba(56,189,248,0.18), 0 8px 16px rgba(0,0,0,0.15);
+      }
+
+      .cta-btn {
+        transition: transform 0.22s ease, box-shadow 0.22s ease, background-color 0.22s ease;
+      }
+      .cta-btn:hover {
+        transform: translateY(-3px) scale(1.04);
+        box-shadow: 0 10px 28px rgba(56,189,248,0.4);
+      }
+      .cta-btn:active { transform: translateY(0) scale(0.98); }
+
+      .bar { transition: transform 0.3s ease, opacity 0.3s ease; }
+      .menu-open #bar1 { transform: rotate(45deg) translate(5px, 6px); }
+      .menu-open #bar2 { opacity: 0; }
+      .menu-open #bar3 { transform: rotate(-45deg) translate(5px, -6px); }
+
+      .social-icon { transition: transform 0.2s ease, background-color 0.2s ease; }
+      .social-icon:hover { transform: translateY(-3px) scale(1.1); }
+
+      @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(28px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+      .fade-up  { animation: fadeUp 0.7s ease both; }
+      .delay-1  { animation-delay: 0.15s; }
+      .delay-2  { animation-delay: 0.3s; }
+      .delay-3  { animation-delay: 0.45s; }
+    </style>
+</head>
+
+<body class="bg-white dark:bg-slate-950 text-slate-800 dark:text-slate-100 transition-colors duration-300">
+
+  <!-- NAVBAR -->
+  <nav id="navbar" class="glass-nav fixed top-0 left-0 right-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+
+        <a href="#home" class="flex items-center gap-2 shrink-0">
+          <div class="w-8 h-8 bg-sky-500 rounded-lg flex items-center justify-center shadow-lg shadow-sky-500/30">
+            <span class="text-white font-display font-bold text-sm">P</span>
+          </div>
+          <span class="font-display font-extrabold text-xl text-slate-800 dark:text-white tracking-tight">
+            Prodesk<span class="text-sky-500">IT</span>
+          </span>
+        </a>
+
+        <div class="hidden md:flex items-center gap-8">
+          <a href="#home"     class="nav-link text-slate-600 dark:text-slate-300 hover:text-sky-500 font-medium text-sm">Home</a>
+          <a href="#about"    class="nav-link text-slate-600 dark:text-slate-300 hover:text-sky-500 font-medium text-sm">About</a>
+          <a href="#services" class="nav-link text-slate-600 dark:text-slate-300 hover:text-sky-500 font-medium text-sm">Services</a>
+          <a href="#contact"  class="nav-link text-slate-600 dark:text-slate-300 hover:text-sky-500 font-medium text-sm">Contact</a>
+          <button onclick="toggleTheme()"
+                  class="w-9 h-9 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center hover:bg-sky-100 dark:hover:bg-sky-900 transition-colors"
+                  aria-label="Toggle theme">
+            <i class="fas fa-sun text-amber-400 dark:hidden text-sm"></i>
+            <i class="fas fa-moon text-sky-400 hidden dark:inline text-sm"></i>
+          </button>
+        </div>
+
+        <div class="md:hidden flex items-center gap-2">
+          <button onclick="toggleTheme()" class="w-9 h-9 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
+            <i class="fas fa-sun text-amber-400 dark:hidden text-sm"></i>
+            <i class="fas fa-moon text-sky-400 hidden dark:inline text-sm"></i>
+          </button>
+          <button id="hamburger" onclick="toggleMenu()"
+                  class="w-9 h-9 rounded-lg bg-slate-100 dark:bg-slate-800 flex flex-col items-center justify-center gap-1.5 px-2"
+                  aria-label="Toggle menu">
+            <span id="bar1" class="bar block w-5 h-0.5 bg-slate-600 dark:bg-slate-300"></span>
+            <span id="bar2" class="bar block w-5 h-0.5 bg-slate-600 dark:bg-slate-300"></span>
+            <span id="bar3" class="bar block w-5 h-0.5 bg-slate-600 dark:bg-slate-300"></span>
+          </button>
+        </div>
+      </div>
+
+      <div id="mobileMenu" class="md:hidden hidden border-t border-slate-200 dark:border-slate-700 mt-1 py-4">
+        <div class="flex flex-col gap-3 px-2">
+          <a href="#home"     onclick="closeMenu()" class="text-slate-600 dark:text-slate-300 hover:text-sky-500 font-medium py-1">Home</a>
+          <a href="#about"    onclick="closeMenu()" class="text-slate-600 dark:text-slate-300 hover:text-sky-500 font-medium py-1">About</a>
+          <a href="#services" onclick="closeMenu()" class="text-slate-600 dark:text-slate-300 hover:text-sky-500 font-medium py-1">Services</a>
+          <a href="#contact"  onclick="closeMenu()" class="text-slate-600 dark:text-slate-300 hover:text-sky-500 font-medium py-1">Contact</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section id="home" class="hero-bg relative min-h-screen flex items-center justify-center text-center px-4 pt-20 overflow-hidden">
+    <div class="absolute w-96 h-96 bg-sky-500/10 rounded-full blur-3xl top-1/4 -left-20 pointer-events-none"></div>
+    <div class="absolute w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl bottom-1/4 -right-16 pointer-events-none"></div>
+
+    <div class="relative z-10 max-w-4xl mx-auto">
+      <div class="fade-up inline-flex items-center gap-2 bg-sky-500/10 border border-sky-500/25 rounded-full px-4 py-1.5 mb-8">
+        <span class="w-2 h-2 bg-sky-400 rounded-full animate-pulse"></span>
+        <span class="text-sky-400 text-sm font-medium tracking-wide">Digital Innovation Agency</span>
+      </div>
+
+      <h1 class="fade-up delay-1 font-display font-extrabold text-5xl sm:text-6xl lg:text-7xl text-white leading-tight mb-4">
+        We Build<br>
+        <span class="gradient-text">Digital Experiences</span>
+      </h1>
+
+      <p class="fade-up delay-2 text-slate-300 text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
+        From SEO to full-stack development — we engineer scalable, high-performance digital products for modern businesses ready to grow.
+      </p>
+
+      <div class="fade-up delay-3 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="#services" class="cta-btn bg-sky-500 hover:bg-sky-400 text-white font-semibold px-8 py-3.5 rounded-xl text-base shadow-lg shadow-sky-500/30 inline-flex items-center gap-2">
+          Get Started <i class="fas fa-arrow-right text-sm"></i>
+        </a>
+        <a href="#about" class="cta-btn border border-slate-500 hover:border-sky-400 text-slate-300 hover:text-sky-400 font-semibold px-8 py-3.5 rounded-xl text-base inline-flex items-center gap-2">
+          Learn More <i class="fas fa-chevron-down text-sm"></i>
+        </a>
+      </div>
+
+      <div class="fade-up delay-3 grid grid-cols-3 gap-6 mt-20 max-w-lg mx-auto border-t border-white/10 pt-10">
+        <div>
+          <p class="font-display font-bold text-3xl text-white">150+</p>
+          <p class="text-slate-400 text-sm mt-1">Projects Shipped</p>
+        </div>
+        <div>
+          <p class="font-display font-bold text-3xl text-white">98%</p>
+          <p class="text-slate-400 text-sm mt-1">Client Satisfaction</p>
+        </div>
+        <div>
+          <p class="font-display font-bold text-3xl text-white">5★</p>
+          <p class="text-slate-400 text-sm mt-1">Average Rating</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section id="about" class="py-24 px-4 bg-slate-50 dark:bg-slate-900">
+    <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <span class="text-sky-500 font-semibold text-sm uppercase tracking-widest">Who We Are</span>
+        <h2 class="font-display font-bold text-4xl text-slate-800 dark:text-white mt-3 mb-5 leading-snug">
+          A Product-Driven<br>Tech Company
+        </h2>
+        <p class="text-slate-500 dark:text-slate-400 leading-relaxed mb-4">
+          Prodesk IT is a remote-first engineering team that builds scalable digital solutions. We operate at the intersection of clean code and creative design.
+        </p>
+        <p class="text-slate-500 dark:text-slate-400 leading-relaxed">
+          Our engineers work asynchronously, move fast, and ship products that perform. Whether it's an SEO strategy, a full-stack app, or a marketing campaign — we own every pixel.
+        </p>
+      </div>
+
+      <div class="bg-white dark:bg-slate-800 rounded-2xl p-8 border border-slate-200 dark:border-slate-700 shadow-lg">
+        <div class="flex flex-col gap-5">
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 bg-sky-500/10 rounded-xl flex items-center justify-center shrink-0">
+              <i class="fas fa-rocket text-sky-500"></i>
+            </div>
+            <div>
+              <p class="font-semibold text-slate-800 dark:text-white text-sm">Fast Delivery</p>
+              <p class="text-slate-400 text-xs mt-0.5">Sprint-based, deadline-driven execution</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 bg-indigo-500/10 rounded-xl flex items-center justify-center shrink-0">
+              <i class="fas fa-shield-halved text-indigo-500"></i>
+            </div>
+            <div>
+              <p class="font-semibold text-slate-800 dark:text-white text-sm">Production-Grade Code</p>
+              <p class="text-slate-400 text-xs mt-0.5">No localhost. Always deployed, always live.</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 bg-emerald-500/10 rounded-xl flex items-center justify-center shrink-0">
+              <i class="fas fa-chart-line text-emerald-500"></i>
+            </div>
+            <div>
+              <p class="font-semibold text-slate-800 dark:text-white text-sm">Measurable Growth</p>
+              <p class="text-slate-400 text-xs mt-0.5">ROI-focused strategies for every client</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES SECTION -->
+  <section id="services" class="py-24 px-4 bg-white dark:bg-slate-950">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <span class="text-sky-500 font-semibold text-sm uppercase tracking-widest">What We Do</span>
+        <h2 class="font-display font-bold text-4xl text-slate-800 dark:text-white mt-3 mb-4">
+          Our Core <span class="text-sky-500">Services</span>
+        </h2>
+        <p class="text-slate-500 dark:text-slate-400 text-lg max-w-xl mx-auto">
+          Everything your brand needs to win in the digital space.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        <div class="service-card group bg-slate-50 dark:bg-slate-900 rounded-2xl p-8 border border-slate-200 dark:border-slate-800 cursor-pointer">
+          <div class="w-14 h-14 bg-sky-500/10 group-hover:bg-sky-500/20 rounded-2xl flex items-center justify-center mb-6 transition-colors">
+            <i class="fas fa-magnifying-glass-chart text-sky-500 text-2xl"></i>
+          </div>
+          <h3 class="font-display font-bold text-xl text-slate-800 dark:text-white mb-3">SEO Optimization</h3>
+          <p class="text-slate-500 dark:text-slate-400 leading-relaxed text-sm">
+            Data-driven keyword research, on-page audits, and link building strategies that push you to Page 1 and keep you there.
+          </p>
+          <div class="mt-6 flex items-center gap-2 text-sky-500 text-sm font-semibold group-hover:gap-3 transition-all">
+            Explore <i class="fas fa-arrow-right text-xs"></i>
+          </div>
+        </div>
+
+        <div class="service-card group bg-sky-500 rounded-2xl p-8 cursor-pointer shadow-xl shadow-sky-500/25">
+          <div class="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center mb-6">
+            <i class="fas fa-code text-white text-2xl"></i>
+          </div>
+          <h3 class="font-display font-bold text-xl text-white mb-3">Web Development</h3>
+          <p class="text-white/80 leading-relaxed text-sm">
+            Full-stack applications powered by React, Node.js, and MongoDB. Built for performance, scalability, and clean architecture.
+          </p>
+          <div class="mt-6 flex items-center gap-2 text-white text-sm font-semibold group-hover:gap-3 transition-all">
+            Explore <i class="fas fa-arrow-right text-xs"></i>
+          </div>
+        </div>
+
+        <div class="service-card group bg-slate-50 dark:bg-slate-900 rounded-2xl p-8 border border-slate-200 dark:border-slate-800 cursor-pointer">
+          <div class="w-14 h-14 bg-sky-500/10 group-hover:bg-sky-500/20 rounded-2xl flex items-center justify-center mb-6 transition-colors">
+            <i class="fas fa-bullhorn text-sky-500 text-2xl"></i>
+          </div>
+          <h3 class="font-display font-bold text-xl text-slate-800 dark:text-white mb-3">Digital Marketing</h3>
+          <p class="text-slate-500 dark:text-slate-400 leading-relaxed text-sm">
+            Targeted campaigns across social, email, and paid channels — maximising your ROI and putting your brand in front of the right audience.
+          </p>
+          <div class="mt-6 flex items-center gap-2 text-sky-500 text-sm font-semibold group-hover:gap-3 transition-all">
+            Explore <i class="fas fa-arrow-right text-xs"></i>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact" class="py-24 px-4 bg-slate-50 dark:bg-slate-900">
+    <div class="max-w-2xl mx-auto text-center">
+      <span class="text-sky-500 font-semibold text-sm uppercase tracking-widest">Let's Talk</span>
+      <h2 class="font-display font-bold text-4xl text-slate-800 dark:text-white mt-3 mb-4">
+        Ready to Start Your<br>
+        <span class="text-sky-500">Digital Journey?</span>
+      </h2>
+      <p class="text-slate-500 dark:text-slate-400 mb-10">
+        Drop us a message and our team will get back to you within 24 hours.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="mailto:hello@prodesk.in"
+           class="cta-btn bg-sky-500 hover:bg-sky-400 text-white font-semibold px-8 py-3.5 rounded-xl text-base shadow-lg shadow-sky-500/30 inline-flex items-center gap-2">
+          Email Us <i class="fas fa-envelope text-sm"></i>
+        </a>
+        <a href="#services"
+           class="cta-btn border border-slate-300 dark:border-slate-600 hover:border-sky-400 text-slate-600 dark:text-slate-300 hover:text-sky-500 font-semibold px-8 py-3.5 rounded-xl text-base inline-flex items-center gap-2">
+          View Services <i class="fas fa-grid-2 text-sm"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 dark:bg-black text-slate-400 py-12 px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+        <div class="text-center md:text-left">
+          <div class="flex items-center justify-center md:justify-start gap-2 mb-3">
+            <div class="w-8 h-8 bg-sky-500 rounded-lg flex items-center justify-center">
+              <span class="text-white font-display font-bold text-sm">P</span>
+            </div>
+            <span class="font-display font-extrabold text-xl text-white">Prodesk<span class="text-sky-500">IT</span></span>
+          </div>
+          <p class="text-sm">&copy; 2025 Prodesk IT. All rights reserved.</p>
+          <p class="text-xs text-slate-600 mt-1">prodesk.in</p>
+        </div>
+
+        <div class="flex items-center gap-6 text-sm">
+          <a href="#home"     class="hover:text-sky-400 transition-colors">Home</a>
+          <a href="#about"    class="hover:text-sky-400 transition-colors">About</a>
+          <a href="#services" class="hover:text-sky-400 transition-colors">Services</a>
+          <a href="#contact"  class="hover:text-sky-400 transition-colors">Contact</a>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <a href="#" class="social-icon w-10 h-10 bg-slate-800 hover:bg-sky-500 rounded-xl flex items-center justify-center"><i class="fab fa-twitter text-sm"></i></a>
+          <a href="#" class="social-icon w-10 h-10 bg-slate-800 hover:bg-blue-700 rounded-xl flex items-center justify-center"><i class="fab fa-linkedin-in text-sm"></i></a>
+          <a href="#" class="social-icon w-10 h-10 bg-slate-800 hover:bg-slate-600 rounded-xl flex items-center justify-center"><i class="fab fa-github text-sm"></i></a>
+          <a href="#" class="social-icon w-10 h-10 bg-slate-800 hover:bg-pink-600 rounded-xl flex items-center justify-center"><i class="fab fa-instagram text-sm"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    }
+
+    (function () {
+      const saved = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (saved === 'dark' || (!saved && prefersDark)) {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+
+    let menuOpen = false;
+    function toggleMenu() {
+      menuOpen = !menuOpen;
+      document.getElementById('mobileMenu').classList.toggle('hidden', !menuOpen);
+      document.getElementById('hamburger').classList.toggle('menu-open', menuOpen);
+    }
+    function closeMenu() {
+      menuOpen = false;
+      document.getElementById('mobileMenu').classList.add('hidden');
+      document.getElementById('hamburger').classList.remove('menu-open');
+    }
+    </script>
+</body>
+</html>
