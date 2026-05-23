@@ -9,7 +9,8 @@
 ## Screenshot
  1[Site Preview](./screenshot.png)
 
----
+## Loom video link 
+https://www.loom.com/share/1f0e7733aa324cbe92454e91e547e34a
 
 ## Sprint Deliverables
 
